@@ -286,6 +286,20 @@ public class Hand implements Comparable {
 								h.setHighHand(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).getCardRank().getiCardNumber() + 4);
 								return h;
 							}
+						else if(((h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).getCardRank().getiCardNumber())==
+								((h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).getCardRank().getiCardNumber()))) 
+								&& ((h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).getCardRank().getiCardNumber())==
+										((h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).getCardRank().getiCardNumber())))){
+								h.setHandscore(eHandScore.FIVEOFAKIND);
+							return h;
+						}
+						else if(((h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).getCardRank().getiCardNumber())==
+								((h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).getCardRank().getiCardNumber()))) 
+								&& ((h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).getCardRank().getiCardNumber())!=
+										((h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).getCardRank().getiCardNumber())))){
+							h.setHandScore(eHandScore.FOUROFAKIND);
+							return h;
+						}
 				}
 			}
 			
