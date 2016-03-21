@@ -246,6 +246,27 @@ public class Hand implements Comparable {
 		if(nbrJokers == 2){
 			h.setNaturalHand(false);
 			
+			int diff = (h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).getCardRank().getiCardNumber())-
+					(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).getCardRank().getiCardNumber());
+			
+			for (eRank rank1: eRank.values()){
+				h.sortHand();
+				for (eRank rank2: eRank.values()){
+					Hand tempHand = new Hand(h.getCardsInHand());
+					tempHand.getCardsInHand().remove(0);
+					tempHand.getCardsInHand().add(new Card(rank2, 
+							h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).getCardSuit(),0));
+					tempHand.getCardsInHand().remove(0);
+					tempHand.getCardsInHand().add(new Card(rank2,
+							h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).getCardSuit(),0));
+					tempHand.sortHand();
+					
+					add(rank1, setCardSuit(), 0);
+					add(rank2, setCardSuit(), 0);
+					
+				}
+			}
+			
 		}
 
 		if (nbrJokers == 1) {
